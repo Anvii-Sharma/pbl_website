@@ -49,26 +49,33 @@
     <main class="max-w-6xl mx-auto px-6 pt-48 pb-32 space-y-32">
         
         <section class="text-center">
-            <div class="inline-block px-4 py-1 border border-slate-800 rounded-full text-slate-500 text-[10px] font-mono mb-6 uppercase tracking-widest">ID: [YOUR_REG_NO]</div>
-            <h1 class="text-6xl md:text-7xl font-extrabold mb-8 uppercase leading-tight"><span class="gradient-text uppercase">[Project Title Here]</span></h1>
-            <p class="text-slate-400 max-w-2xl mx-auto italic text-lg leading-relaxed border-l-2 border-blue-500/30 pl-6 text-left">
-                "Hypothesis/Project Statement: Define the core research question or the primary objective of your development project."
-            </p>
+            <div class="inline-block px-4 py-1 border border-slate-800 rounded-full text-slate-500 text-[10px] font-mono mb-6 uppercase tracking-widest">ID: 2427030223</div>
+            <h1 class="text-6xl md:text-7xl font-extrabold mb-8 uppercase leading-tight"><span class="gradient-text uppercase">Depression Detection Using Social Media</span></h1>
+            <p class="text-slate-400 leading-relaxed text-justify">
+This project aims to develop an intelligent system that detects early signs of depression by combining 
+natural language processing and typing behavior analysis. Social media text often reflects emotional 
+distress, while keystroke dynamics reveal psychomotor patterns associated with depressive tendencies. 
+By integrating textual sentiment features with typing metrics such as key hold time and inter-key delay, 
+the system provides a more comprehensive and data-driven risk estimation model.
+</p>
+
         </section>
 
         <section id="problem" class="grid md:grid-cols-2 gap-12 items-stretch">
             <div class="glass p-10 rounded-[2.5rem] flex flex-col justify-center border-l-4 border-blue-600">
                 <h2 class="text-3xl font-extrabold mb-6">Problem Statement</h2>
-                <p class="text-slate-400 leading-relaxed text-justify">Describe the specific challenge you are addressing. Why is this project necessary?</p>
+                <p class="text-slate-400 leading-relaxed text-justify">Digital text communication often reflects emotional and cognitive states through harmful word usage and typing behavior patterns. Existing systems rely heavily on self-reporting and fail to detect subtle behavioral signals. This project addresses the need for a privacy-preserving system that analyzes harmful language and typing dynamics to estimate early depression risk in a non-intrusive manner.</p>
             </div>
             <div class="space-y-6">
                 <div class="glass p-7 rounded-3xl border-r-4 border-blue-500/50">
                     <h3 class="text-blue-400 font-bold text-xs uppercase tracking-widest mb-2">Literature Review / Market Research</h3>
-                    <p class="text-sm text-slate-500 italic">Summary of existing solutions or research papers analyzed.</p>
+                    <p class="text-sm text-slate-500 italic">The study on touchscreen typing pattern analysis like "Touchscreen typing pattern analysis for remote detection of the depressive tendency" by Rafail-Evangelos Mastoras, Dimitrios Iakovakis, Stelios Hadjidimitriou, Vasileios Charisis, Seada Kassie, Taoufik Alsaadi, Ahsan Khandoker & Leontios J. Hadjileontiadis and  demonstrates that depressive tendencies influence psychomotor behavior, resulting in measurable changes in typing speed, key hold duration, inter-key delay, and error patterns. The research highlights how passive behavioral biometrics can be utilized for remote, non-intrusive detection of depression risk indicators.</p>
                 </div>
                 <div class="glass p-7 rounded-3xl border-r-4 border-purple-500/50">
                     <h3 class="text-purple-400 font-bold text-xs uppercase tracking-widest mb-2">Research Gap / Innovation</h3>
-                    <p class="text-sm text-slate-500 italic">What makes your approach different or better than the State-of-the-Art?</p>
+                    <p class="text-sm text-slate-500 italic">Depression is often underreported and socially stigmatized, leading to delayed diagnosis. Existing systems primarily depend on self-reported surveys and lack passive behavioral indicators. This project introduces a hybrid detection approach by combining textual emotional signals with keystroke biometrics, enabling earlier and more objective risk estimation.
+</p>
+
                 </div>
             </div>
         </section>
@@ -79,12 +86,29 @@
                 <div class="glass p-8 rounded-3xl text-center">
                     <i class="fas fa-database text-blue-500 text-3xl mb-4"></i>
                     <h3 class="font-bold mb-2 uppercase text-xs tracking-widest">Dataset / Input</h3>
-                    <p class="text-sm text-slate-500">[Source, size, and preprocessing details]</p>
+                    <p class="text-sm text-slate-500">
+ Mental health text dataset (labeled depression data)  
+ DSL Strong Password keystroke dataset  
+ Features extracted:
+  1) TF-IDF text vectors  
+  2) Average Hold Time (H.)  
+  3) Average Down-Down Time (DD.)  
+  4) Average Up-Down Time (UD.)
+</p>
+
                 </div>
                 <div class="glass p-8 rounded-3xl text-center">
                     <i class="fas fa-microchip text-purple-500 text-3xl mb-4"></i>
                     <h3 class="font-bold mb-2 uppercase text-xs tracking-widest">Model / Architecture</h3>
-                    <p class="text-sm text-slate-500">[Algorithms used or System Workflow]</p>
+                    <p class="text-sm text-slate-500"><p class="text-sm text-slate-500">
+1)Text preprocessing (lowercasing)  
+2)TF-IDF vectorization  
+3)Keystroke feature aggregation  
+4)Standardization using StandardScaler  
+5)Logistic Regression classifier  
+6)Feature fusion using sparse matrix stacking (hstack)
+</p>
+</p>
                 </div>
                 <div class="glass p-8 rounded-3xl text-center border-2 border-green-500/20 bg-green-500/5">
                     <i class="fab fa-python text-green-500 text-3xl mb-4"></i>
@@ -113,12 +137,12 @@
             <div class="flex flex-wrap justify-center gap-10">
                 <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-blue-600">
                     <p class="text-[9px] font-bold text-blue-500 mb-2 uppercase tracking-widest">Project Guide</p>
-                    <p class="font-black text-xl text-slate-100">[Guide Name]</p>
+                    <p class="font-black text-xl text-slate-100">Dr. Manu Srivastav</p>
                 </div>
                 <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-slate-700">
                     <p class="text-[9px] font-bold text-slate-400 mb-2 uppercase tracking-widest">Team Member 1</p>
-                    <p class="font-black text-xl text-slate-100">[Student Name]</p>
-                    <p class="text-[10px] text-slate-500 mt-1">[Reg No]</p>
+                    <p class="font-black text-xl text-slate-100">Anvi Sharma</p>
+                    <p class="text-[10px] text-slate-500 mt-1">2427030223</p>
                 </div>
             </div>
         </section>
@@ -179,3 +203,4 @@
 </body>
 
 </html>
+
