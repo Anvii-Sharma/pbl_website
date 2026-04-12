@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PBL Presentation | 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+        body { background-color: #020617; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .gradient-text { background: linear-gradient(90deg, #60a5fa, #a855f7); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        #timerContainer { background: #ffffff; color: #020617; box-shadow: 0 10px 40px rgba(0,0,0,0.8); border: 3px solid #3b82f6; z-index: 1000; }
+        @keyframes flicker { 0%, 100% { background-color: #ffffff; } 50% { background-color: #fca5a5; } }
+        .timer-warning { animation: flicker 1s infinite; border: 3px solid #ef4444 !important; color: #b91c1c !important; }
+        .timer-stop { background-color: #991b1b !important; color: #ffffff !important; border: 3px solid #f87171 !important; animation: none; }
+        .stat-pill { background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.25); border-radius: 999px; padding: 2px 12px; font-size: 11px; color: #60a5fa; font-weight: 700; letter-spacing: 0.05em; display: inline-block; }
+        .done-badge { background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3); border-radius: 999px; padding: 2px 10px; font-size: 10px; color: #4ade80; font-weight: 700; letter-spacing: 0.05em; display: inline-block; }
+        .future-badge { background: rgba(168,85,247,0.12); border: 1px solid rgba(168,85,247,0.3); border-radius: 999px; padding: 2px 10px; font-size: 10px; color: #c084fc; font-weight: 700; letter-spacing: 0.05em; display: inline-block; }
+    </style>
+</head>
+<body onload="startTimer()">
+
+    <div id="timerContainer" class="fixed bottom-10 right-10 px-8 py-4 rounded-3xl flex items-center gap-4 transition-all">
+        <i class="fas fa-hourglass-start text-blue-600 text-2xl" id="timerIcon"></i>
+        <span id="displayTime" class="text-4xl font-black font-mono tracking-tighter">00:00</span>
+    </div>
+
+    <nav class="fixed w-full z-50 glass border-b border-slate-800/50 px-8 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <div class="bg-white p-1 rounded flex items-center justify-center shadow-md" style="height: 48px; width: 48px;">
+                <img src="mujlogo.jpeg" alt="MUJ" class="h-full w-auto object-contain" onerror="this.src='https://via.placeholder.com/50?text=MUJ'">
+            </div>
+            <div class="flex flex-col text-left">
+                <span class="text-xl font-black text-white leading-none uppercase tracking-tighter">PBL <span class="text-blue-500 italic">2026</span></span>
+                <span class="text-[9px] text-slate-400 font-bold uppercase tracking-widest mt-1">Dept. of Computer Science & Engineering</span>
+            </div>
+        </div>
+        <div class="hidden md:flex gap-8 text-[11px] uppercase tracking-widest font-bold opacity-70">
+            <a href="#problem" class="hover:text-blue-400 transition">Problem</a>
+            <a href="#methodology" class="hover:text-blue-400 transition">Methodology</a>
+            <a href="#implemented" class="hover:text-blue-400 transition">Implemented</a>
+            <a href="#results" class="hover:text-blue-400 transition">Results</a>
+            <a href="#team" class="hover:text-blue-400 transition">Team</a>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 pt-48 pb-32 space-y-32">
+
+        <!-- Hero -->
+        <section class="text-center">
+            <div class="inline-block px-4 py-1 border border-slate-800 rounded-full text-slate-500 text-[10px] font-mono mb-6 uppercase tracking-widest">ID: 2427030223</div>
+            <h1 class="text-6xl md:text-7xl font-extrabold mb-8 uppercase leading-tight">
+                <span class="gradient-text uppercase">Depression Detection Using Social Media</span>
+            </h1>
+            <p class="text-slate-400 leading-relaxed text-justify">
+                This project aims to develop an intelligent system that detects early signs of depression by analysing the language a person uses on social media — specifically the emotional weight of the positive and negative words they write. A machine learning classifier is trained on over 267,000 real-world labelled posts from public mental health communities, learning to distinguish concerning language from neutral text. The current implementation delivers a fully working web application with clinical screening, real-time text analysis, a supportive chatbot, and personal progress tracking. Future scope includes passive analysis directly from a user's social media feed.
+            </p>
+        </section>
+
+        <!-- Problem -->
+        <section id="problem" class="grid md:grid-cols-2 gap-12 items-stretch">
+            <div class="glass p-10 rounded-[2.5rem] flex flex-col justify-center border-l-4 border-blue-600">
+                <h2 class="text-3xl font-extrabold mb-6">Problem Statement</h2>
+                <p class="text-slate-400 leading-relaxed text-justify">Digital text communication — especially social media — often reflects emotional and cognitive states through the type of language a person uses. Existing systems rely heavily on self-reporting and fail to detect subtle behavioural signals embedded in everyday writing. This project addresses the need for a privacy-preserving system that passively analyses the positive and negative language patterns in a person's social media text to estimate early depression risk in a non-intrusive manner.</p>
+            </div>
+            <div class="space-y-6">
+                <div class="glass p-7 rounded-3xl border-r-4 border-blue-500/50">
+                    <h3 class="text-blue-400 font-bold text-xs uppercase tracking-widest mb-2">Literature Review / Market Research</h3>
+                    <p class="text-sm text-slate-500 italic leading-relaxed">The study on touchscreen typing pattern analysis like "Touchscreen typing pattern analysis for remote detection of the depressive tendency" by Rafail-Evangelos Mastoras et al. demonstrates that depressive tendencies influence psychomotor behaviour and language patterns. Further NLP research (CLPsych shared tasks, EMNLP mental health studies) confirms that social media language reliably signals distress — users exhibit measurable shifts toward negative affect words, hopelessness expressions, and first-person singular language.</p>
+                </div>
+                <div class="glass p-7 rounded-3xl border-r-4 border-purple-500/50">
+                    <h3 class="text-purple-400 font-bold text-xs uppercase tracking-widest mb-2">Research Gap / Innovation</h3>
+                    <p class="text-sm text-slate-500 italic leading-relaxed">Depression is often underreported and socially stigmatised, leading to delayed diagnosis. Most academic NLP systems remain offline research tools inaccessible to real users. This project bridges that gap — training on 267,782 posts across three real-world datasets and deploying as a live web application. Future scope extends to directly ingesting a user's own social media writing for passive, ongoing risk estimation without requiring manual input.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Methodology -->
+        <section id="methodology" class="space-y-12">
+            <h2 class="text-4xl font-black text-center uppercase tracking-tight">System <span class="text-blue-500">Methodology</span></h2>
+            <div class="grid md:grid-cols-3 gap-8">
+
+                <div class="glass p-8 rounded-3xl">
+                    <i class="fas fa-database text-blue-500 text-3xl mb-4"></i>
+                    <h3 class="font-bold mb-3 uppercase text-xs tracking-widest">Datasets Used</h3>
+                    <ul class="text-sm text-slate-400 space-y-3 leading-relaxed">
+                        <li><span class="stat-pill">27,977</span><span class="ml-2">mental_health.csv</span></li>
+                        <li><span class="stat-pill">7,731</span><span class="ml-2">Depression Reddit</span></li>
+                        <li><span class="stat-pill">232,074</span><span class="ml-2">Suicide Detection</span></li>
+                        <li class="pt-2 text-slate-500">Perfectly balanced — 50% concerning, 50% not. Combined into one unified corpus of 267,782 posts.</li>
+                    </ul>
+                </div>
+
+                <div class="glass p-8 rounded-3xl">
+                    <i class="fas fa-microchip text-purple-500 text-3xl mb-4"></i>
+                    <h3 class="font-bold mb-3 uppercase text-xs tracking-widest">Model Pipeline</h3>
+                    <ol class="text-sm text-slate-400 space-y-2 leading-relaxed">
+                        <li><span class="text-purple-400 font-bold mr-2">1.</span>Text cleaning — lowercase, strip URLs &amp; symbols</li>
+                        <li><span class="text-purple-400 font-bold mr-2">2.</span>TF-IDF vectorisation — 20,000 features, unigrams + bigrams</li>
+                        <li><span class="text-purple-400 font-bold mr-2">3.</span>80/20 stratified train-test split</li>
+                        <li><span class="text-purple-400 font-bold mr-2">4.</span>Logistic Regression (C=1.0, max_iter=1000)</li>
+                        <li><span class="text-purple-400 font-bold mr-2">5.</span>Saved as <code class="text-slate-300 bg-slate-800 px-1 rounded">trained_model.pkl</code></li>
+                    </ol>
+                </div>
+
+                <div class="glass p-8 rounded-3xl border-2 border-green-500/20 bg-green-500/5">
+                    <i class="fab fa-python text-green-500 text-3xl mb-4"></i>
+                    <h3 class="font-bold mb-3 uppercase text-xs tracking-widest text-green-400">Tech Stack</h3>
+                    <ul class="text-sm text-slate-400 space-y-2 leading-relaxed">
+                        <li><i class="fas fa-circle text-green-500 mr-2" style="font-size:7px;vertical-align:middle"></i>Python + Flask (web backend)</li>
+                        <li><i class="fas fa-circle text-green-500 mr-2" style="font-size:7px;vertical-align:middle"></i>scikit-learn (TF-IDF + LogReg)</li>
+                        <li><i class="fas fa-circle text-green-500 mr-2" style="font-size:7px;vertical-align:middle"></i>HTML / CSS / JavaScript (frontend)</li>
+                        <li><i class="fas fa-circle text-green-500 mr-2" style="font-size:7px;vertical-align:middle"></i>Render (deployment)</li>
+                        <li><i class="fas fa-circle text-green-500 mr-2" style="font-size:7px;vertical-align:middle"></i>GitHub (version control)</li>
+                    </ul>
+                    <a href="https://github.com/Anvii-Sharma/pbl_project" target="_blank"
+                       class="mt-5 inline-block px-6 py-2 bg-green-600 rounded-full text-[10px] font-black hover:bg-green-500 transition shadow-lg shadow-green-900/40">
+                        VIEW SOURCE CODE
+                    </a>
+                </div>
+            </div>
+
+            <!-- Pipeline -->
+            <div class="glass p-8 rounded-3xl">
+                <h3 class="font-bold mb-6 uppercase text-xs tracking-widest text-slate-400 text-center">End-to-End Pipeline</h3>
+                <div class="flex flex-wrap justify-center items-center gap-3 text-center">
+                    <div class="bg-blue-950/60 border border-blue-500/30 rounded-2xl px-5 py-3">
+                        <p class="text-[10px] text-blue-400 uppercase tracking-widest mb-1">Input</p>
+                        <p class="text-sm font-bold">3 CSV datasets</p>
+                        <p class="text-[10px] text-slate-500">267,782 posts</p>
+                    </div>
+                    <i class="fas fa-arrow-right text-slate-600"></i>
+                    <div class="bg-purple-950/60 border border-purple-500/30 rounded-2xl px-5 py-3">
+                        <p class="text-[10px] text-purple-400 uppercase tracking-widest mb-1">Process</p>
+                        <p class="text-sm font-bold">Clean + TF-IDF</p>
+                        <p class="text-[10px] text-slate-500">20k features</p>
+                    </div>
+                    <i class="fas fa-arrow-right text-slate-600"></i>
+                    <div class="bg-purple-950/60 border border-purple-500/30 rounded-2xl px-5 py-3">
+                        <p class="text-[10px] text-purple-400 uppercase tracking-widest mb-1">Train</p>
+                        <p class="text-sm font-bold">Logistic Regression</p>
+                        <p class="text-[10px] text-slate-500">80/20 split</p>
+                    </div>
+                    <i class="fas fa-arrow-right text-slate-600"></i>
+                    <div class="bg-slate-800/60 border border-slate-500/30 rounded-2xl px-5 py-3">
+                        <p class="text-[10px] text-slate-400 uppercase tracking-widest mb-1">Save</p>
+                        <p class="text-sm font-bold">trained_model.pkl</p>
+                        <p class="text-[10px] text-slate-500">909 KB</p>
+                    </div>
+                    <i class="fas fa-arrow-right text-slate-600"></i>
+                    <div class="bg-green-950/60 border border-green-500/30 rounded-2xl px-5 py-3">
+                        <p class="text-[10px] text-green-400 uppercase tracking-widest mb-1">Deploy</p>
+                        <p class="text-sm font-bold">Flask on Render</p>
+                        <p class="text-[10px] text-slate-500">Live web app</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Implemented -->
+        <section id="implemented" class="space-y-8">
+            <h2 class="text-4xl font-black text-center uppercase tracking-tight">What's <span class="text-blue-500">Implemented</span></h2>
+            <p class="text-center text-slate-500 text-sm max-w-2xl mx-auto">Four fully working modules in the current web app. Social media feed integration is the planned next phase.</p>
+
+            <div class="grid md:grid-cols-2 gap-8">
+
+                <div class="glass p-8 rounded-3xl border-l-4 border-blue-500">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-clipboard-list text-blue-400 text-xl"></i>
+                            <h3 class="font-black text-lg">PHQ-9 Screening Quiz</h3>
+                        </div>
+                        <span class="done-badge">Done</span>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed">The clinically validated 9-question Patient Health Questionnaire. Users rate each symptom from 0–3. The app calculates a score, maps it to a severity level (Minimal / Mild / Moderate / Moderately Severe / Severe), and saves it for progress tracking.</p>
+                </div>
+
+                <div class="glass p-8 rounded-3xl border-l-4 border-purple-500">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-brain text-purple-400 text-xl"></i>
+                            <h3 class="font-black text-lg">ML Text Analysis</h3>
+                        </div>
+                        <span class="done-badge">Done</span>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed">The trained TF-IDF + Logistic Regression model analyses any text the user types and outputs a probability score, mapped to Low / Medium / High concern. Trained on 267,782 posts, 93.9% accuracy. This is the core module that will later connect to social media feeds.</p>
+                </div>
+
+                <div class="glass p-8 rounded-3xl border-l-4 border-green-500">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-comments text-green-400 text-xl"></i>
+                            <h3 class="font-black text-lg">Supportive Chatbot</h3>
+                        </div>
+                        <span class="done-badge">Done</span>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed">A keyword-driven conversational interface that detects emotional tone — sadness, anxiety, anger, or positive affect — and responds with contextually appropriate supportive replies. Designed to provide immediate, non-clinical emotional acknowledgment to the user.</p>
+                    <div class="mt-4 bg-slate-900/60 rounded-2xl p-4 text-xs font-mono space-y-2">
+                        <p><span class="text-slate-500">User:</span> <span class="text-slate-300">I feel tired and hopeless</span></p>
+                        <p><span class="text-green-400">Bot:</span> <span class="text-slate-400">That sounds really heavy. I hear you. Would you like to talk more about what's been going on?</span></p>
+                    </div>
+                </div>
+
+                <div class="glass p-8 rounded-3xl border-l-4 border-amber-500">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-chart-line text-amber-400 text-xl"></i>
+                            <h3 class="font-black text-lg">Progress Tracker</h3>
+                        </div>
+                        <span class="done-badge">Done</span>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed">Stores the last 5 PHQ-9 scores and displays session-over-session trends — e.g. "Improved by 3 points since last time." Gives users a longitudinal view of their mental health over time without requiring an account or login.</p>
+                </div>
+
+            </div>
+
+            <!-- Future scope -->
+            <div class="glass p-8 rounded-3xl border border-purple-500/30 bg-purple-500/5">
+                <div class="flex items-center gap-3 mb-4">
+                    <i class="fas fa-rocket text-purple-400 text-xl"></i>
+                    <h3 class="font-black text-lg">Future Scope — Social Media Integration</h3>
+                    <span class="future-badge">Planned</span>
+                </div>
+                <p class="text-sm text-slate-400 leading-relaxed">The next phase will extend the ML text analysis module to passively ingest posts from a user's own social media accounts (Twitter/X, Reddit). The same trained model will score the emotional tone of their recent writing history — tracking shifts in negative vs positive language over weeks — providing a continuous, passive risk estimation without requiring manual input. This is the full realisation of the "depression detection using social media" vision.</p>
+            </div>
+        </section>
+
+        <!-- Results -->
+        <section id="results" class="glass p-12 rounded-[3.5rem] border-t-4 border-blue-500">
+            <h2 class="text-3xl font-black mb-12 text-center uppercase tracking-tight">Results & <span class="text-blue-500">Analysis</span></h2>
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="h-80"><canvas id="resultsChart"></canvas></div>
+                <div class="space-y-4">
+                    <div class="p-5 rounded-2xl bg-white/5 flex justify-between items-center border border-white/10">
+                        <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">Overall Accuracy</span>
+                        <span class="text-blue-400 font-mono font-black text-3xl">93.9%</span>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-white/5 flex justify-between items-center border border-white/10">
+                        <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">Precision</span>
+                        <span class="text-purple-400 font-mono font-black text-3xl">95%</span>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-white/5 flex justify-between items-center border border-white/10">
+                        <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">Recall</span>
+                        <span class="text-green-400 font-mono font-black text-3xl">93%</span>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-white/5 flex justify-between items-center border border-white/10">
+                        <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">Training Samples</span>
+                        <span class="text-slate-200 font-mono font-black text-2xl">267,782</span>
+                    </div>
+                    <p class="text-slate-500 text-sm italic leading-relaxed pt-2">Evaluated on a held-out test set of 53,557 posts (20% stratified split). Baseline keyword model scored 78.6% — the trained model improves this by 15.3 percentage points.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team -->
+        <section id="team" class="text-center pt-10 border-t border-slate-900">
+            <h2 class="text-[10px] font-black text-slate-600 uppercase tracking-[0.5em] mb-12">Academic Credits</h2>
+            <div class="flex flex-wrap justify-center gap-10">
+                <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-blue-600">
+                    <p class="text-[9px] font-bold text-blue-500 mb-2 uppercase tracking-widest">Project Guide</p>
+                    <p class="font-black text-xl text-slate-100">Dr. Manu Srivastav</p>
+                </div>
+                <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-slate-700">
+                    <p class="text-[9px] font-bold text-slate-400 mb-2 uppercase tracking-widest">Team Member</p>
+                    <p class="font-black text-xl text-slate-100">Anvi Sharma</p>
+                    <p class="text-[10px] text-slate-500 mt-1">2427030223</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-12 text-center bg-black/40 border-t border-slate-900">
+        <p class="text-slate-600 text-[10px] font-bold tracking-[0.3em] uppercase mb-2">Manipal University Jaipur</p>
+        <p class="text-slate-500 text-[9px] font-medium tracking-[0.2em] uppercase opacity-50">Department of Computer Science & Engineering • 2026</p>
+    </footer>
+
+    <script>
+        let sec = 0, timer = null;
+        function startTimer() {
+            timer = setInterval(() => {
+                sec++;
+                let m = Math.floor(sec / 60), s = sec % 60;
+                document.getElementById('displayTime').innerText =
+                    `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+                if (sec >= 480 && sec < 600) {
+                    document.getElementById('timerContainer').classList.add('timer-warning');
+                    document.getElementById('timerIcon').className = 'fas fa-hourglass-half text-2xl';
+                } else if (sec >= 600) {
+                    clearInterval(timer);
+                    document.getElementById('timerContainer').classList.replace('timer-warning','timer-stop');
+                    document.getElementById('displayTime').innerText = "10:00";
+                    document.getElementById('timerIcon').className = 'fas fa-hourglass-end text-2xl';
+                }
+            }, 1000);
+        }
+
+        const ctx = document.getElementById('resultsChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Keyword baseline', 'TF-IDF + LogReg (ours)'],
+                datasets: [{
+                    label: 'Accuracy %',
+                    data: [78.6, 93.9],
+                    backgroundColor: ['#1e3a5f', '#3b82f6'],
+                    borderRadius: 15,
+                    barThickness: 60
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { callbacks: { label: ctx => ` ${ctx.parsed.y}%` } }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true, max: 100,
+                        grid: { color: '#ffffff08' },
+                        ticks: { color: '#475569', callback: v => v + '%' }
+                    },
+                    x: { grid: { display: false }, ticks: { color: '#475569' } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
